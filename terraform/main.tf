@@ -53,7 +53,7 @@ module "rds" {
 }
 
 # ── ECR Repo ─────────────────────────────────────────────────────────────────
-resource "aws_ecr_repository" "app" {
+resource "aws_ecr_repository" "umami" {
   name                 = "umami"
   image_tag_mutability = "MUTABLE"
   image_scanning_configuration { scan_on_push = true }
