@@ -25,12 +25,16 @@ jobs:
 
       - name: Terraform init
         run: terraform init
+        working-directory: terraform
       
       - name: Terraform validate
         run: terraform validate
+        working-directory: terraform
 
       - name: Terraform plan
         run: terraform plan
+        working-directory: terraform
 
       - name: Terraform apply
         run: terraform apply-auto-approve
+        working-directory: terraform
