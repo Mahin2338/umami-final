@@ -144,7 +144,7 @@ module "ecs" {
   cluster_name = "pastefy-cluster"
 
   # For smoke test use nginx. Be sure app_port=80 in tfvars while testing.
-  container_image = "${aws_ecr_repository.umami.repository_url}:v1"
+  container_image = "ghcr.io/umami-software/umami:postgresql-latest"
   container_port  = local.app_port
 
   private_subnet_ids = module.vpc.private_subnet_ids
