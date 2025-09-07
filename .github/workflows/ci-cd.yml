@@ -24,13 +24,13 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform init
-        run: Terraform init
+        run: terraform init
       
       - name: Terraform validate
-        run: Terraform validate
+        run: terraform validate
 
       - name: Terraform plan
-        run: Terraform plan
+        run: terraform plan
 
       - name: Terraform apply
-        run: Terraform apply-auto-approve
+        run: terraform apply-auto-approve
