@@ -77,7 +77,13 @@ Screenshots 📷
 
 <img width="1920" height="1080" alt="Screenshot (400)" src="https://github.com/user-attachments/assets/5c1ffe06-95a7-4d0f-ace8-211fa2992552" />
 
+<img width="1887" height="841" alt="image" src="https://github.com/user-attachments/assets/ae9d623c-6e68-4e8c-9eaf-2e5d0410c03a" />
 
+<img width="1896" height="840" alt="image" src="https://github.com/user-attachments/assets/33f1e190-9eee-4b58-a218-c67c65a9be3b" />
+
+<img width="1900" height="861" alt="image" src="https://github.com/user-attachments/assets/09bb6b97-95d8-4989-9123-6fa0828df643" />
+
+<img width="1884" height="951" alt="image" src="https://github.com/user-attachments/assets/93c7e97d-7305-4d1c-9dab-ae5f4864a395" />
 
 
 
