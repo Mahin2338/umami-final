@@ -3,7 +3,7 @@ Umami Final Project 🚀
 A cloud-native deployment of the Umami analytics application using Terraform for Infrastructure as Code (IaC) and GitHub Actions for CI/CD.
 This project demonstrates how to build, deploy, and manage a real-world app on AWS ECS (Fargate) with RDS PostgreSQL, showing end-to-end automation of infrastructure and deployments.
 
-⸻
+
 
 📌 Project Overview
 
@@ -15,7 +15,7 @@ The goal of this project was to simulate a real cloud engineer/DevOps workflow:
 
 This setup mirrors production-grade cloud deployments and demonstrates IaC, CI/CD, and cloud-native app hosting.
 
-⸻
+
 
 🏗️ Architecture Flow:
 	1.	Developer pushes code → GitHub Actions triggers pipeline.
@@ -25,7 +25,7 @@ This setup mirrors production-grade cloud deployments and demonstrates IaC, CI/C
 	5.	App is accessible through an Application Load Balancer (ALB) and also mapped to my own custom domain via ROUTE53
  
 
-⸻
+
 
 ⚙️ Technologies Used
 	•	AWS ECS (Fargate) – container orchestration
@@ -36,7 +36,7 @@ This setup mirrors production-grade cloud deployments and demonstrates IaC, CI/C
 	•	S3 + DynamoDB – remote state backend
 	•	GitHub Actions – CI/CD pipeline
 
-⸻
+
 
 🚀 Deployment Flow
 	1.	Code push to GitHub
@@ -51,11 +51,7 @@ This setup mirrors production-grade cloud deployments and demonstrates IaC, CI/C
 	•	Pulls container image (currently from ghcr.io/umami-software/umami)
 	•	Runs the app on Fargate
 
-⸻
 
-📸 Screenshots
-	•	GitHub Actions run: 
- 
  
  
  🔮 Future Improvements
@@ -66,7 +62,7 @@ This setup mirrors production-grade cloud deployments and demonstrates IaC, CI/C
 	• Improve cost optimization eg. automatic shutdown for non-prod environments
 	•	Add multi-environment support (dev/stage/prod)
 
-⸻
+
 
 📚 Learning Outcomes
 
@@ -75,3 +71,15 @@ This project demonstrates:
 	•	Managing remote Terraform state in S3/DynamoDB.
 	•	Automating deployments via CI/CD with GitHub Actions.
 	•	Deploying a real-world app on AWS ECS + RDS.
+
+
+Screenshots 📷 
+
+<img width="1920" height="1080" alt="Screenshot (400)" src="https://github.com/user-attachments/assets/5c1ffe06-95a7-4d0f-ace8-211fa2992552" />
+
+
+
+
+
+
+ 
