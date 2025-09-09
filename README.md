@@ -88,5 +88,7 @@ Screenshots 📷
 
 <img width="1899" height="874" alt="image" src="https://github.com/user-attachments/assets/9b494dd2-0127-4b67-8b98-ce10b2d47465" />
 
+<img width="1692" height="901" alt="ecs-final-chart" src="https://github.com/user-attachments/assets/5297ee77-bab8-422f-a328-dfd3967ce68a" />
+
 
  
