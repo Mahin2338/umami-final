@@ -80,6 +80,3 @@ variable "app_secret" {
   
 }
 
-variable "db_host" {
-  type = string
-}
