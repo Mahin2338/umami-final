@@ -40,7 +40,8 @@ jobs:
             --build-arg BASE_PATH="" \
             -t $ECR_REPOSITORY:$GITHUB_SHA \
             -t $ECR_REPOSITORY:latest \
-            .
+            -f umami/Dockerfile \
+            ./umami
 
       - name: Tag and push image to Amazon ECR
         env:
