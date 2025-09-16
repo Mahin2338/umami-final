@@ -114,7 +114,8 @@ resource "aws_lb_listener" "https" {
 }
 
 resource "aws_route53_zone" "primary" {
-  name = var.domain_name
+  name          = var.domain_name
+  
 }
 
 
@@ -144,7 +145,7 @@ module "ecs" {
   cluster_name = "pastefy-cluster"
 
   # For smoke test use nginx. Be sure app_port=80 in tfvars while testing.
-  container_image = "ghcr.io/umami-software/umami:postgresql-latest"
+  container_image = "${aws_ecr_repository.umami.repository_url}:latest"
   container_port  = local.app_port
 
   private_subnet_ids = module.vpc.private_subnet_ids
@@ -152,7 +153,7 @@ module "ecs" {
   target_group_arn   = aws_lb_target_group.app.arn
 
   # DB inputs (module likely requires ALL of these)
-  db_host     = module.rds.address
+  db_host     = module.rds.db_address
   db_port     = 5432
   db_name     = var.db_name
   db_username = var.db_username # <-- add username (was missing)
@@ -161,7 +162,15 @@ module "ecs" {
 
 
   app_url      = "http://${var.domain_name}"
+
+  alb_dns_name = aws_lb.app1.dns_name
   
 }
 
 
+
+resource "aws_cloudwatch_log_group" "umami" {
+  name = "/ecs/umami"
+  retention_in_days = 7
+  
+}

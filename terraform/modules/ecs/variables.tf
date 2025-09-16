@@ -94,3 +94,6 @@ variable "app_secret" {
   sensitive = true
   
 }
+variable "alb_dns_name" {
+  type = string
+}
