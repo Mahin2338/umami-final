@@ -79,3 +79,7 @@ variable "app_secret" {
   sensitive = true
   
 }
+
+variable "db_host" {
+  type = string
+}
