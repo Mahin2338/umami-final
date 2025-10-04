@@ -2,3 +2,14 @@
 *.tfstate
 *.tfstate.backup
 .terraform.lock.hcl
+*.tfvars
+*.tfvars.json
+terraform.tfstate
+terraform.tfstate.*
+*.tfplan
+.terraform/
+.terraform.lock.hcl
+.env
+.env.local
+*.pem
+*.key
