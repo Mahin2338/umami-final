@@ -58,7 +58,7 @@ resource "aws_ecs_task_definition" "app" {
       }],
 
       environment = [
-        { name = "DATABASE_URL", value = "postgresql://${var.db_username}:${var.db_password}@${var.db_host}:${var.db_port}/${var.db_name}" },
+        { name = "DATABASE_URL", value = "postgresql://${var.db_username}:${var.db_password}@${var.db_host}:${tostring(var.db_port)}/${var.db_name}" },
         { name = "APP_SECRET", value = var.app_secret },   
         { name = "NEXT_PUBLIC_APP_URL", value = "http://${var.alb_dns_name}"},
 
