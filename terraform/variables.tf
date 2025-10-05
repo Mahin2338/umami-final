@@ -80,7 +80,3 @@ variable "app_secret" {
   
 }
 
-variable "ecr_repository_url" {
-  description = "ECR repository URL for the container image"
-  type        = string
-}

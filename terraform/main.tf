@@ -145,7 +145,7 @@ module "ecs" {
   cluster_name = "pastefy-cluster"
 
 
-  container_image = "${var.ecr_repository_url}:latest"
+  container_image = "${module.ecr_repository_url}:latest"
   container_port  = local.app_port
 
   private_subnet_ids = module.vpc.private_subnet_ids
