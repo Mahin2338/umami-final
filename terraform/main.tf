@@ -100,37 +100,37 @@ resource "aws_lb_listener" "http" {
   }
 }
 
-resource "aws_lb_listener" "https" {
-  load_balancer_arn = aws_lb.app1.arn
-  port = 443
-  protocol = "HTTPS"
-  ssl_policy = "ELBSecurityPolicy-2016-08"
-  certificate_arn = "arn:aws:acm:eu-west-2:165258187464:certificate/ac79a385-de32-4f93-940e-a1d811b4a246"
+#resource "aws_lb_listener" "https" {
+ # load_balancer_arn = aws_lb.app1.arn
+  #port = 443
+  #protocol = "HTTPS"
+  #ssl_policy = "ELBSecurityPolicy-2016-08"
+  #certificate_arn = "arn:aws:acm:eu-west-2:165258187464:certificate/ac79a385-de32-4f93-940e-a1d811b4a246"
 
-  default_action {
-    type = "forward"
-    target_group_arn = aws_lb_target_group.app.arn
-  }
-}
+  #default_action {
+    #type = "forward"
+    #target_group_arn = aws_lb_target_group.app.arn
+  #}
+#}
 
-resource "aws_route53_zone" "primary" {
-  name          = var.domain_name
+#resource "aws_route53_zone" "primary" {
+ # name          = var.domain_name
   
-}
+#}
 
 
-resource "aws_route53_record" "root_a" {
-  zone_id = aws_route53_zone.primary.zone_id
-  name = var.domain_name
-  type = "A"
+#resource "aws_route53_record" "root_a" {
+ # zone_id = aws_route53_zone.primary.zone_id
+  #name = var.domain_name
+  #type = "A"
   
-  alias {
-    name = aws_lb.app1.dns_name
-    zone_id = aws_lb.app1.zone_id
-    evaluate_target_health = true
+  #alias {
+   # name = aws_lb.app1.dns_name
+    #zone_id = aws_lb.app1.zone_id
+    #evaluate_target_health = true
 
-  }
-}
+  #}
+#}
 
 
 

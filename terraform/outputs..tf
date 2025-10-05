@@ -11,12 +11,13 @@ output "ecs_service_name" {
     value = module.ecs.service_name
 }
 
-output "route53_zone_id" {
-    value = aws_route53_zone.primary.zone_id
+#output "route53_zone_id" {
+    #value = aws_route53_zone.primary.zone_id
   
-}
+#}
 
 output "db_host" { 
     value = module.rds.db_host
   
 }
+#
