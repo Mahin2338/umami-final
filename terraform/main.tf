@@ -144,19 +144,19 @@ module "ecs" {
   aws_region   = var.aws_region
   cluster_name = "pastefy-cluster"
 
-  # For smoke test use nginx. Be sure app_port=80 in tfvars while testing.
-  container_image = "${aws_ecr_repository.umami.repository_url}:latest"
+
+  container_image = "${var.ecr_repository_url}:latest"
   container_port  = local.app_port
 
   private_subnet_ids = module.vpc.private_subnet_ids
   ecs_sg_id          = module.security.ecs_sg_id
   target_group_arn   = aws_lb_target_group.app.arn
 
-  # DB inputs (module likely requires ALL of these)
+  # DB inputs 
   db_host     = module.rds.db_address
   db_port     = 5432
   db_name     = var.db_name
-  db_username = var.db_username # <-- add username (was missing)
+  db_username = var.db_username 
   db_password = var.db_password
   app_secret = var.app_secret
 
