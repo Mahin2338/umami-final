@@ -26,14 +26,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      # Docker Build and Push Steps
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Build Docker image
         run: |
-          # Build the Docker image with build arguments
           docker build \
             --build-arg DATABASE_TYPE=postgresql \
             --build-arg DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy" \
@@ -48,15 +46,11 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          # Tag images for ECR
           docker tag $ECR_REPOSITORY:$GITHUB_SHA $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
           docker tag $ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
-          
-          # Push both tags
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
-      # Terraform Steps
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
@@ -77,6 +71,17 @@ jobs:
           TF_VAR_aws_region: ${{ env.AWS_REGION }}
           TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
           TF_VAR_app_secret: ${{ secrets.APP_SECRET }}
+          TF_VAR_app_port: ${{ vars.APP_PORT }}
+          TF_VAR_az_a: ${{ vars.AZ_A }}
+          TF_VAR_az_b: ${{ vars.AZ_B }}
+          TF_VAR_vpc_cidr_block: ${{ vars.VPC_CIDR_BLOCK }}
+          TF_VAR_public_subnet_a_cidr: ${{ vars.PUBLIC_SUBNET_A_CIDR }}
+          TF_VAR_public_subnet_b_cidr: ${{ vars.PUBLIC_SUBNET_B_CIDR }}
+          TF_VAR_private_subnet_a_cidr: ${{ vars.PRIVATE_SUBNET_A_CIDR }}
+          TF_VAR_private_subnet_b_cidr: ${{ vars.PRIVATE_SUBNET_B_CIDR }}
+          TF_VAR_db_name: ${{ vars.DB_NAME }}
+          TF_VAR_db_username: ${{ vars.DB_USERNAME }}
+          TF_VAR_domain_name: ${{ vars.DOMAIN_NAME }}
 
       - name: Terraform apply
         run: terraform apply -auto-approve tfplan
@@ -85,8 +90,18 @@ jobs:
           TF_VAR_aws_region: ${{ env.AWS_REGION }}
           TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
           TF_VAR_app_secret: ${{ secrets.APP_SECRET }}
+          TF_VAR_app_port: ${{ vars.APP_PORT }}
+          TF_VAR_az_a: ${{ vars.AZ_A }}
+          TF_VAR_az_b: ${{ vars.AZ_B }}
+          TF_VAR_vpc_cidr_block: ${{ vars.VPC_CIDR_BLOCK }}
+          TF_VAR_public_subnet_a_cidr: ${{ vars.PUBLIC_SUBNET_A_CIDR }}
+          TF_VAR_public_subnet_b_cidr: ${{ vars.PUBLIC_SUBNET_B_CIDR }}
+          TF_VAR_private_subnet_a_cidr: ${{ vars.PRIVATE_SUBNET_A_CIDR }}
+          TF_VAR_private_subnet_b_cidr: ${{ vars.PRIVATE_SUBNET_B_CIDR }}
+          TF_VAR_db_name: ${{ vars.DB_NAME }}
+          TF_VAR_db_username: ${{ vars.DB_USERNAME }}
+          TF_VAR_domain_name: ${{ vars.DOMAIN_NAME }}
 
-      # Force ECS to deploy new image
       - name: Update ECS service
         run: |
           aws ecs update-service \
